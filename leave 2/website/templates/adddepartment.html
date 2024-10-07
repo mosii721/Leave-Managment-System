@@ -1,0 +1,29 @@
+{% extends "base.html" %}{% block title %}Home{% endblock %}
+{% block content %}
+<header id="header" class="content">
+<div >
+    <button class="open-btn" onclick="toggleSidebar()">☰ </button> 
+    <h1 style="margin-left: 1%;display: inline;">LMS</h1>
+</div>
+<hr>
+
+
+<div style="margin-left: 15px;font-size: 25px;">Department Section &nbsp;  <div style="display: inline;margin-left: 3%;" class="dropdown" onclick="toggleDropdown(this)">Admin<span class="dropdown-arrow" >▼</span>
+    <ul class="dropdown-content">
+        <li><a href="/logout" style="text-decoration: none;">Logout</a></li>
+    </ul>
+</div> </div>
+</header>
+<div class="form-container" id="add-div">
+    <form  method="POST">
+    <h4>please fill up the form to add new department</h4>
+<label for="departmentname"  class="form-label">Department Name</label>
+<input type="text" name="departmentname" id="departmentname" class="form-input">
+<label for="shortform" class="form-label">Shortform</label>
+<input type="text" name="shortform" id="shortform" class="form-input">
+<label for="code" class="form-label">Code</label>
+<input type="text" name="code" id="code" class="form-input">
+<button type="submit" class="buttons" style="margin-left: 42%;width: 20%;">Add Department</button>
+</form>
+</div>
+{% endblock %}    

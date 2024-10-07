@@ -1,0 +1,36 @@
+{% extends "base.html" %}{% block title %}Home{% endblock %}
+{% block content %}
+<header id="header" class="content">
+<div >
+    <button class="open-btn" onclick="toggleSidebar()">☰ </button> 
+    <h1 style="margin-left: 1%;display: inline;">LMS</h1>
+</div>
+<hr>
+
+
+<div style="margin-left: 15px;font-size: 25px;">Employee Section &nbsp;  <div style="display: inline;margin-left: 3%;" class="dropdown" onclick="toggleDropdown(this)">Admin<span class="dropdown-arrow" >▼</span>
+    <ul class="dropdown-content">
+        <li><a href="/logout" style="text-decoration: none;">Logout</a></li>
+    </ul>
+</div> </div>
+</header>
+<div class="div-login" style="background-color: white;margin-top: 5%;">
+<h1 style="text-align: center;"><u>Leave Details</u></h1>
+<ul>
+    <li><h3><b>Starting Date</b></h3>{{ leaveapplication.sdate }}</li>
+    
+    <li> <h3>Ending Date</h3>
+        {{  leaveapplication.edate }}</li>
+        <li> <h3>Maximum Days</h3>
+        {{ leaveapplication.leavedays}}</li>
+        <li> <h3><b>Leave type</b></h3> 
+            {{ leaveapplication.leave }}</li>
+            <li> <h3><b>Description</b></h3>
+                {{ leaveapplication.descriptions }}</li>
+            </ul>       
+
+</div>
+
+
+
+{% endblock %}

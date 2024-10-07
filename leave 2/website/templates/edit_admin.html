@@ -1,0 +1,47 @@
+{% extends "base.html" %}{% block title %}Home{% endblock %}
+{% block content %}
+<header id="header" class="content">
+<div >
+    <button class="open-btn" onclick="toggleSidebar()">☰ </button> 
+    <h1 style="margin-left: 1%;display: inline;">LMS</h1>
+</div>
+<hr>
+
+
+<div style="margin-left: 15px;font-size: 25px;">Employee Section &nbsp;  <div style="display: inline;margin-left: 3%;" class="dropdown" onclick="toggleDropdown(this)">Admin<span class="dropdown-arrow" >▼</span>
+    <ul class="dropdown-content">
+        <li><a href="/logout" style="text-decoration: none;">Logout</a></li>
+    </ul>
+</div> </div>
+</header>
+<div class="form-container" id="add-div">
+<form  method="POST">
+    <label for="firstname" class="form-label">First Name:</label>
+    <input type="text" id="firstname" name="firstname" class="form-input" value="{{ admin.firstname }}"><br><br>
+    <label for="lastname" class="form-label">Last Name:</label>
+    <input type="text" id="lastname" name="lastname" class="form-input" value="{{ admin.lastname }}"><br><br>
+
+    <label for="email" class="form-label">Email:</label><br>
+    <input type="email" id="email" name="email" class="form-input"  value="{{ admin.email }}"><br><br>
+
+    
+
+    <label for="adminid"  class="form-label">Employee ID</label>
+<input type="adminid" name="adminid" id="adminid" class="form-input" value="{{ admin.adminid }}">
+
+
+
+<label for="contact"  class="form-label">Contact</label>
+<input type="tel" name="contact" id="contact" class="form-input" value="{{ admin.contact }}">
+
+<label for="password"  class="form-label">Password</label>
+<input type="password" name="password" id="password" class="form-input" value="{{ admin.password }}">
+
+    <input type="submit"  value="Update" class="buttons">
+</form>
+</div>
+
+
+
+
+{% endblock %}

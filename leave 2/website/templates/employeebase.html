@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../static/style.css"> 
+         <title>{% block title %}Home{% endblock %}</title>
+    </head>
+    <body style="background-color: whitesmoke;" >
+        <nav class="sidebar" id="sidebar">
+            <h1 style="margin-left: 20%;font-size: 34px;"><u>LMS</u></h1>
+          <ul>
+            
+              <li style="margin-top: 30px;"><a href="/userhome" class="active" >Apply Leave<div style="background-color: skyblue;width: 57%;padding-bottom: 2px;"></div>
+              </a></li>
+              <li><a href="/userpendingleaves" >Pending Leaves </a></li>
+              <li><a href="/userleavehistory" >Leave History</a></li>
+              <li><a href="/leavedays" >Leave Days</a></li>
+              
+          </ul>
+      </nav>
+     
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category,message in messages %}
+        {% if category == 'error'%}
+        <div class="alert error">
+            {{ message }}
+            <button type="button" class="close-btn" style="margin-left: 90%;border: none;background:none;"><span aria-hidden="true">&times;</span></button>
+        </div>
+        {% else %}
+        <div class="alert success">
+            {{ message }}
+            <button type="button" class="close-btn" style="margin-left: 90%;border: none;background:none;"><span aria-hidden="true">&times;</span></button>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endwith%}
+      {% block content %}
+      {% endblock %}
+        <script src="../static/script.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              // Get all the close buttons
+              var closeButtons = document.querySelectorAll('.alert .close-btn');
+          
+              // Iterate over each button and add a click event listener
+              closeButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                  // Get the closest alert div
+                  var alert = this.closest('.alert');
+                  // Hide the alert
+                  alert.style.display = 'none';
+                });
+              });
+            });
+          </script>
+    </body>

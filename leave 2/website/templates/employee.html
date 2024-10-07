@@ -1,0 +1,62 @@
+{% extends "base.html" %}{% block title %}Home{% endblock %}
+{% block content %}
+<header id="header" class="content">
+<div >
+    <button class="open-btn" onclick="toggleSidebar()">☰ </button> 
+    <h1 style="margin-left: 1%;display: inline;">LMS</h1>
+</div>
+<hr>
+
+
+<div style="margin-left: 15px;font-size: 25px;">Employee Section &nbsp;  <div style="display: inline;margin-left: 3%;" class="dropdown" onclick="toggleDropdown(this)">Admin<span class="dropdown-arrow" >▼</span>
+    <ul class="dropdown-content">
+        <li><a href="/logout" style="text-decoration: none;">Logout</a></li>
+    </ul>
+</div> </div>
+</header>
+<div id="table-div" >
+    <br><br>
+    
+    <a href="/addnewemployee" class="buttons" style="margin-left: 40%;">Add New Employee</a>
+    <div class="table-top">
+    <label for="rowsPerPage" style="font-size: 15px;">Show:</label>
+    <select id="rowsPerPage" style="width: 5%;" onchange="updateTable()">
+        <option value="5">5</option>
+        <option value="10" selected>10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+        <option value="200">200</option>
+        <option value="500">500</option>
+        <option value="1000">1000</option>
+    </select>
+<input type="text" name="search" id="search" class="search" style=" margin-left: 70%;"placeholder="Search"></div>
+<table class="table" id="allTable" >
+    <tr style="background-color: black;color: white;">
+    <th class="table-heading2" style="border: none;">S.N</th>
+    <th class="table-heading2">NAME</th>
+    <th class="table-heading2">EMPLOYEE ID</th>
+    <th class="table-heading2">DEPARTMENT</th>
+    <th class="table-heading2">JOINED ON</th>
+    <th class="table-heading2"> STATUS</th>
+    <th class="table-heading2" style="padding-left: 130px;"></th>
+</tr>
+{% for employee in employees %}
+<tr><td class="table-heading2">{{ employee.id }}</td>
+    <td class="table-heading2"><a href="{{ url_for('admin.employee_details', employee_id=employee.id) }}" style="color: black;text-decoration: none;">{{ employee.firstname }} {{ employee.lastname}}</a></td>
+    <td class="table-heading2">{{ employee.employeeid }} </td>
+    <td class="table-heading2">{{ employee.department }}</td>
+    <td class="table-heading2">{{employee.created_at.strftime('%Y-%m-%d')}}</td>
+    <td class="table-heading2">{% if status == 'active'%}
+        Active
+        {% else %}
+        Inert
+        {% endif %}
+    </td>
+    <td class="table-heading2"><button onclick="deleteItem('employee', {{ employee.id }})" style="background-color: skyblue;border: none;padding: 10%;color: white;padding-left: 15%;">Delete</button></td></tr>
+    {% endfor %}
+</table>
+</div>
+
+{% endblock %}

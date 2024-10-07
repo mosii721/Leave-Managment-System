@@ -1,0 +1,48 @@
+{% extends "employeebase.html" %}{% block title %}Home{% endblock %}
+{% block content %}
+<header id="header" class="content">
+    <div >
+        <button class="open-btn" onclick="toggleSidebar()">☰ </button> 
+        <h1 style="margin-left: 1%;display: inline;">LMS</h1>
+    </div>
+    <hr>
+    
+    
+    <div style="margin-left: 15px;font-size: 25px;">Employee Details &nbsp;  <div style="display: inline;margin-left: 68%;" class="dropdown" onclick="toggleDropdown(this)">Employee<span class="dropdown-arrow" >▼</span>
+        <ul class="dropdown-content" style="background-color: skyblue;">
+            <li><a href="{{ url_for('user.userdetails', employee_id=employee.id) }}" style="text-decoration: none;font-size: large;">View details</a> </li>
+            <i><a href="{{ url_for('user.userpasswordedit', employee_id=employee.id) }}" style="text-decoration: none;font-size: large;">Change Password</a></li>
+            <li><a href="/logout" style="text-decoration: none;font-size: large;">Logout</a></li>
+        </ul>
+    </div> </div>
+    </header>
+<div class="div-login" style="background-color: white;margin-top: 5%;">
+<h1 style="text-align: center;">Your Details</h1>
+<div class="directors-pic" style="margin-left: 38%;"></div>
+    
+        <div style="margin-left: 19%;"><b>Employee ID</b><div style="display: inline;margin-left: 27%;">{{ employee.employeeid }}</div></div>
+        
+        <div style="margin-left: 19%;"><b>First Name</b>
+            <div style="display: inline;margin-left: 29%;">{{ employee.firstname }}</div></div>
+            <div style="margin-left: 19%;"><b>Last Name</b>
+                <div style="display: inline;margin-left: 30%;">{{ employee.lastname }}</div></div>
+                <div style="margin-left: 19%;"><b>Email</b>
+                    <div style="display: inline;margin-left: 39%;">{{ employee.email }}</div></div>
+                    <div style="margin-left: 19%;"><b>Contact</b>
+                        <div style="display: inline;margin-left: 36%;">{{ employee.contact }}</div></div>
+        <div style="margin-left: 19%;"><b>Department</b>
+            <div style="display: inline;margin-left: 29%;">{{ employee.department }}</div></div>
+        <div style="margin-left: 19%;"><b>Gender</b>
+            <div style="display: inline;margin-left: 37%;">{{ employee.gender }}</div></div>
+        <div style="margin-left: 19%;"><b>Address</b>
+            <div style="display: inline;margin-left: 36%;">{{ employee.address }}</div></div>
+        <div style="margin-left: 19%;"><b>Date of Birth</b>
+            <div style="display: inline;margin-left: 27%;">{{ employee.birth }}</div></div>
+            
+    </tr>
+</table>
+</div>
+
+
+
+{% endblock %}

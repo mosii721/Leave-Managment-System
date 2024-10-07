@@ -1,0 +1,29 @@
+{% extends "base.html" %}{% block title %}Home{% endblock %}
+{% block content %}
+<header id="header" class="content">
+<div >
+    <button class="open-btn" onclick="toggleSidebar()">☰ </button> 
+    <h1 style="margin-left: 1%;display: inline;">LMS</h1>
+</div>
+<hr>
+
+
+<div style="margin-left: 15px;font-size: 25px;">Leave Section &nbsp;  <div style="display: inline;margin-left: 3%;" class="dropdown" onclick="toggleDropdown(this)">Admin<span class="dropdown-arrow" >▼</span>
+    <ul class="dropdown-content">
+        <li><a href="/logout" style="text-decoration: none;">Logout</a></li>
+    </ul>
+</div> </div>
+</header>
+<div class="form-container" id="add-div">
+    <form  method="POST">
+    <h4>please fill up the form to add new leave type</h4>
+<label for="leavetype"  class="form-label">Leave Type</label>
+<input type="text" name="leavetype" id="leavetype" class="form-input">
+<label for="leavedays"  class="form-label">Maximum Leave Days</label>
+<input type="text" name="leavedays" id="leavedays" class="form-input">
+<label for="description" class="form-label">Short Description</label>
+<textarea name="description" id="description" class="form-input"></textarea> 
+<button type="submit" class="buttons" style="margin-left: 42%;width: 20%;">Add Leave Type</button>
+</form>
+</div>
+{% endblock %}    

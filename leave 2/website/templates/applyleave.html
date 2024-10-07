@@ -1,0 +1,42 @@
+{% extends "employeebase.html" %}{% block title %}Home{% endblock %}
+{% block content %}
+<header id="header" class="content">
+<div >
+    <button class="open-btn" onclick="toggleSidebar()">☰ </button> 
+    <h1 style="margin-left: 1%;display: inline;">LMS</h1>
+</div>
+<hr>
+
+
+<div style="margin-left: 15px;font-size: 25px;">Employee Section &nbsp;  <div style="display: inline;margin-left: 68%;" class="dropdown" onclick="toggleDropdown(this)">Employee<span class="dropdown-arrow" >▼</span>
+    <ul class="dropdown-content" style="background-color: skyblue;">
+        <li><a href="{{ url_for('user.userdetails', employee_id=employee.id) }}" style="text-decoration: none;font-size: large;">View details</a> </li>
+        <i><a href="{{ url_for('user.userpasswordedit', employee_id=employee.id) }}" style="text-decoration: none;font-size: large;">Change Password</a></li>
+        <li><a href="/logout" style="text-decoration: none;font-size: large;">Logout</a></li>
+    </ul>
+</div> </div>
+</header>
+<div class="form-container" id="add-div">
+    <form method="POST">
+    <h3>Employee Leave Form</h3>
+    <h4>Please fill the form below</h4>
+<label for="sdate"  class="form-label">Starting Date</label>
+<input type="date" name="sdate" id="sdate" class="form-input">
+<label for="edate" class="form-label">End Date</label>
+<input type="date" name="edate" id="edate" class="form-input">
+<label for="leave" class="form-label">Leave Type</label>
+        <select id="leave" name="leave" class="form-input">
+            {% for leave in leaves%}
+            <option value="{{ leave.id }}" class="form-input" >{{ leave.leavetype}}</option><!-- value  is leave.id to get the id of the leave being chosen-->
+            {% endfor %}   
+        </select>
+<label for="descriptions" class="form-label">Describe Your Condition</label>
+<textarea name="descriptions" id="descriptions" class="form-input" style="padding-bottom: 8%;"></textarea> 
+
+<button type="submit" class="buttons" style="margin-left: 42%;width: 20%;">Submit</button>
+</form>
+</div>
+<div>
+    
+    
+{% endblock %}    

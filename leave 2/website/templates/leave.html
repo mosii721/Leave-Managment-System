@@ -1,0 +1,47 @@
+{% extends "base.html" %}{% block title %}Home{% endblock %}
+{% block content %}
+<header id="header" class="content">
+<div >
+    <button class="open-btn" onclick="toggleSidebar()">☰ </button> 
+    <h1 style="margin-left: 1%;display: inline;">LMS</h1>
+</div>
+<hr>
+
+
+<div style="margin-left: 15px;font-size: 25px;">Leave Section &nbsp;  <div style="display: inline;margin-left: 3%;" class="dropdown" onclick="toggleDropdown(this)">Admin<span class="dropdown-arrow" >▼</span>
+    <ul class="dropdown-content">
+        <li><a href="/logout" style="text-decoration: none;">Logout</a></li>
+    </ul>
+</div> </div>
+</header>
+<div id="table-div" >
+    <br><br>
+    <a href="/addleavetype" class="buttons" style="margin-left: 40%;">Add New Leave Type</a>
+    <div class="table-top">
+        <label for="rowsPerPage" style="font-size: 15px;">Show:</label>
+        <select id="rowsPerPage" style="width: 5%;" onchange="updateTable()">
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+        </select>
+    <input type="text" name="search" id="search" class="search" style=" margin-left: 70%;"placeholder="Search"></div>
+<table class="table" id="allTable">
+    <tr style="background-color: black;color: white;">
+    <th class="table-heading4" style="border: none;">S.N</th>
+    <th class="table-heading4">LEAVE TYPE</th>
+    <th class="table-heading4">DESCRIPTION</th>
+    <th class="table-heading4">CREATED</th>
+    <th class="table-heading4" style="padding-left: 130px;"></th>
+</tr>
+{% for leave in leaves %}
+<tr><td class="table-heading4">{{ leave.id }}</td>
+    <td class="table-heading4">{{ leave.leavetype }}</td>
+    <td class="table-heading4">{{ leave.description }}</td>
+    <td class="table-heading4">{{ leave.created_at.strftime('%Y-%m-%d') }}</td>
+    <td class="table-heading4"><button onclick="deleteItem('leave', {{ leave.id }})" style="background-color: skyblue;border: none;padding: 10%;color: white;padding-left: 15%;">Delete</button></td></tr>
+    {% endfor %}
+</table>
+</div>
+
+{% endblock %}

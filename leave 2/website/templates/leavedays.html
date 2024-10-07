@@ -1,0 +1,28 @@
+{% extends "employeebase.html" %}{% block title %}Home{% endblock %}
+{% block content %}
+<header id="header" class="content">
+    <div >
+        <button class="open-btn" onclick="toggleSidebar()">☰ </button> 
+        <h1 style="margin-left: 1%;display: inline;">LMS</h1>
+    </div>
+    <hr>
+    
+    
+    <div style="margin-left: 15px;font-size: 25px;">Leave days Section &nbsp;  <div style="display: inline;margin-left: 68%;" class="dropdown" onclick="toggleDropdown(this)">Employee<span class="dropdown-arrow" >▼</span>
+        <ul class="dropdown-content" style="background-color: skyblue;">
+            <li><a href="{{ url_for('user.userdetails', employee_id=employee.id) }}" style="text-decoration: none;font-size: large;">View details</a> </li>
+            <i><a href="{{ url_for('user.userpasswordedit', employee_id=employee.id) }}" style="text-decoration: none;font-size: large;">Change Password</a></li>
+            <li><a href="/logout" style="text-decoration: none;font-size: large;">Logout</a></li>
+        </ul>
+    </div> </div>
+    </header>
+    <div id="card-container" >
+        {% for leavebalance in leavebalances %}
+        <div id="card" style="margin-left: 3%;"><div id="card-header">{{ leavebalance.leave.leavetype }}</div>
+        <div style="display: inline;margin-left: 10%;font-size: 35px;">{{ leavebalance.remaining_days }}</div>
+        
+    <div style="margin-left: 27%;margin-top: 5%;display: inline;font-size: 20px;"><sup>Leave Days</sup></div></div>
+    {% endfor %}
+        
+    </div>
+{% endblock %}

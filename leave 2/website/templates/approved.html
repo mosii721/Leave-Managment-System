@@ -1,0 +1,45 @@
+{% extends "base.html" %}{% block title %}Home{% endblock %}
+{% block content %}
+<header id="header" class="content">
+<div >
+    <button class="open-btn" onclick="toggleSidebar()">☰ </button> 
+    <h1 style="margin-left: 1%;display: inline;">LMS</h1>
+</div>
+<hr>
+
+
+<div style="margin-left: 15px;font-size: 25px;">Approved Leaves &nbsp;  <div style="display: inline;margin-left: 3%;" class="dropdown" onclick="toggleDropdown(this)">Admin<span class="dropdown-arrow" >▼</span>
+    <ul class="dropdown-content">
+        <li><a href="/logout" style="text-decoration: none;">Logout</a></li>
+    </ul>
+</div> </div>
+</header>
+<div id="table-div" >
+    <br><br>
+    <div style="margin-left: 3%;font-size: 20px;">Recent List <div style="background-color: skyblue;width: 9%;padding-bottom: 2px;"></div></div>
+<table class="table">
+    <tr >
+    <th class="table-heading" style="border: none;">S.N</th>
+    <th class="table-heading">EMPLOYEE ID</th>
+    <th class="table-heading">FULLNAME</th>
+    <th class="table-heading">LEAVE TYPE</th>
+    <th class="table-heading">APPLIED ON</th>
+    <th class="table-heading">CURRENT STATUS</th>
+    <th class="table-heading" style="padding-left: 130px;"></th>
+
+{% for leave_application in approved_leaves %}
+    <tr>
+        <td  class="table-heading">{{ leave_application.id }}</td>
+        <td  class="table-heading">{{ leave_application.employee.employeeid }}</td>
+        <td  class="table-heading">{{ leave_application.employee.firstname }} {{ leave_application.employee.lastname }}</td>
+        <td  class="table-heading">{{ leave_application.leave }}</td>
+        <td  class="table-heading">{{leave_application.created_at.strftime('%Y-%m-%d')}}</td>
+        <td  class="table-heading">{{ leave_application.status }}</td>
+        <td class="table-heading"><a href="{{ url_for('admin.approvedseedetails', leaveapplication_id=leave_application.id) }}" style="color: black;text-decoration: none;">See Details</a></td>
+        
+    </tr>
+    {% endfor %}
+        
+</table>
+</div>
+{% endblock %}

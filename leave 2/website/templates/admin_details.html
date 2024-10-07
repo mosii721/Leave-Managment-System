@@ -1,0 +1,40 @@
+{% extends "base.html" %}{% block title %}Home{% endblock %}
+{% block content %}
+<header id="header" class="content">
+<div >
+    <button class="open-btn" onclick="toggleSidebar()">☰ </button> 
+    <h1 style="margin-left: 1%;display: inline;">LMS</h1>
+</div>
+<hr>
+
+
+<div style="margin-left: 15px;font-size: 25px;">Admin Section &nbsp;  <div style="display: inline;margin-left: 3%;" class="dropdown" onclick="toggleDropdown(this)">Admin<span class="dropdown-arrow" >▼</span>
+    <ul class="dropdown-content">
+        <li><a href="/logout" style="text-decoration: none;">Logout</a></li>
+    </ul>
+</div> </div>
+</header>
+<div class="div-login" style="background-color: white;margin-top: 5%;">
+<h1 style="text-align: center;">Admin Details</h1>
+<div class="directors-pic" style="margin-left: 38%;"></div>
+    
+        <div style="margin-left: 19%;"><b>Admin ID</b><div style="display: inline;margin-left: 27%;">{{ admin.adminid }}</div></div>
+        
+        <div style="margin-left: 19%;"><b>First Name</b>
+            <div style="display: inline;margin-left: 24%;">{{ admin.firstname }}</div></div>
+            <div style="margin-left: 19%;"><b>Last Name</b>
+                <div style="display: inline;margin-left: 25%;">{{ admin.lastname }}</div></div>
+                <div style="margin-left: 19%;"><b>Email</b>
+                    <div style="display: inline;margin-left: 34%;">{{ admin.email }}</div></div>
+                    <div style="margin-left: 19%;"><b>Contact</b>
+                        <div style="display: inline;margin-left: 30%;">{{ admin.contact }}</div></div>
+                        <a href="{{ url_for('admin.edit_admin', admin_id=admin.id) }}">
+                <button class="buttons" style="margin-left: 35%;margin-top: 4%;">Edit Details</button>
+            </a>
+    </tr>
+</table>
+</div>
+
+
+
+{% endblock %}

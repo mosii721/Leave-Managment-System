@@ -1,0 +1,49 @@
+{% extends "base.html" %}{% block title %}Home{% endblock %}
+{% block content %}
+<header id="header" class="content">
+<div >
+    <button class="open-btn" onclick="toggleSidebar()">☰ </button> 
+    <h1 style="margin-left: 1%;display: inline;">LMS</h1>
+</div>
+<hr>
+
+
+<div style="margin-left: 15px;font-size: 25px;">Employee Section &nbsp;  <div style="display: inline;margin-left: 3%;" class="dropdown" onclick="toggleDropdown(this)">Admin<span class="dropdown-arrow" >▼</span>
+    <ul class="dropdown-content">
+        <li><a href="/logout" style="text-decoration: none;">Logout</a></li>
+    </ul>
+</div> </div>
+</header>
+<div class="form-container" id="add-div">
+<form  method="POST">
+    <label for="firstname" class="form-label">First Name:</label>
+    <input type="text" id="firstname" name="firstname" class="form-input" value="{{ employee.firstname }}"><br><br>
+    <label for="lastname" class="form-label">Last Name:</label>
+    <input type="text" id="lastname" name="lastname" class="form-input" value="{{ employee.lastname }}"><br><br>
+
+    <label for="email" class="form-label">Email:</label><br>
+    <input type="email" id="email" name="email" class="form-input"  value="{{ employee.email }}"><br><br>
+
+    <label for="department" class="form-label" >Department:</label><br>
+    <input type="text" id="department" name="department" class="form-input" value="{{ employee.department }}"><br><br>
+
+    <label for="employeeid"  class="form-label">Employee ID</label>
+<input type="employeeid" name="employeeid" id="employeeid" class="form-input" value="{{ employee.employeeid }}">
+
+<label for="address"  class="form-label">Address</label>
+<input type="address" name="address" id="address" class="form-input" value="{{ employee.address }}">
+
+<label for="contact"  class="form-label">Contact</label>
+<input type="tel" name="contact" id="contact" class="form-input" value="{{ employee.contact }}">
+
+<label for="password"  class="form-label">Password</label>
+<input type="password" name="password" id="password" class="form-input" value="{{ employee.password }}">
+
+    <input type="submit"  value="Update" class="buttons">
+</form>
+</div>
+
+
+
+
+{% endblock %}

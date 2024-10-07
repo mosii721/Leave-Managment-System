@@ -1,0 +1,48 @@
+{% extends "employeebase.html" %}{% block title %}Home{% endblock %}
+{% block content %}
+<header id="header" class="content">
+<div >
+    <button class="open-btn" onclick="toggleSidebar()">☰ </button> 
+    <h1 style="margin-left: 1%;display: inline;">LMS</h1>
+</div>
+<hr>
+
+
+<div style="margin-left: 15px;font-size: 25px;">Employee Section &nbsp;  <div style="display: inline;margin-left: 3%;" class="dropdown" onclick="toggleDropdown(this)">Admin<span class="dropdown-arrow" >▼</span>
+    <ul class="dropdown-content">
+        <li><a href="/logout" style="text-decoration: none;">Logout</a></li>
+    </ul>
+</div> </div>
+</header>
+<div class="form-container" id="add-div">
+    <form method="POST">
+    <h4>please fill up the form to add employee records</h4>
+<label for="employeeid"  class="form-label">Employee ID</label>
+<input type="employeeid" name="employeeid" id="employeeid" class="form-input">
+<label for="firstname" class="form-label">First Name</label>
+<input type="firstname" name="firstname" id="firstname" class="form-input">
+<label for="lastname" class="form-label">Last Name</label>
+<input type="lastname" name="lastname" id="lastname" class="form-input">
+<label for="email" class="form-label">Email</label>
+<input type="email" name="email" id="email" class="form-input">
+<label for="department" class="form-label">Department</label>
+<input type="department" name="department" id="department" class="form-input">
+<label for="gender" class="form-label">Gender</label>
+        <select id="gender" name="gender" class="form-input">
+            <option value="male" class="form-input" >Male</option>
+            <option value="female" class="form-input">Female</option>    
+        </select>
+<label for="address" class="form-label">Address</label>
+<input type="address" name="address" id="address" class="form-input">
+<label for="contact" class="form-label">Contact</label>
+<input type="tel" name="contact" id="contact" class="form-input">
+<label for="birth" class="form-label">D.O.B</label>
+<input type="date" name="birth" id="birth" class="form-input">
+<label for="password1" class="form-label">Password</label>
+<input type="password" name="password1" id="password1" class="form-input">
+<label for="password2" class="form-label">Confirm Password</label>
+<input type="password" name="password2" id="password2" class="form-input " style="margin-bottom: 4%;">
+<button type="submit" class="buttons" style="margin-left: 42%;width: 20%;">Add Employee</button>
+</form>
+</div>
+{% endblock %}    
